@@ -141,8 +141,22 @@ const Register = () => {
       alert("Account created successfully!");
       nav("/login");
     } catch (error) {
-      console.log(error);
-      alert("Unable to create account");
+      console.log("Register Error:", error);
+
+      if (error.response) {
+        console.log("Status:", error.response.status);
+        console.log("Backend Response:", error.response.data);
+
+        alert(
+          error.response.data?.message ||
+            error.response.data?.error ||
+            "Unable to create account",
+        );
+      } else if (error.request) {
+        alert("Backend server is not running or cannot be reached.");
+      } else {
+        alert("Unable to create account");
+      }
     }
   };
 

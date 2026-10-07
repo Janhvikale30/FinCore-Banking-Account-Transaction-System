@@ -16,6 +16,8 @@ import DepositPage from "./components/DepositPage.jsx";
 import Withdraw from "./components/Withdraw.jsx";
 import TransactionHistory from "./components/TransactionHistory.jsx";
 import Profile from "./components/Profile.jsx";
+import AdminLogin from "./components/AdminLogin.jsx";
+import AdminDashboard from "./components/AdminDashboard.jsx";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Route path="/withdraw" element={<Withdraw />}></Route>
           <Route path="/transactions" element={<TransactionHistory />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </>

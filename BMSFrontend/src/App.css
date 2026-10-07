@@ -4711,3 +4711,229 @@ button {
 .no-transactions p {
   margin: 0;
 }
+.admin-login-home {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.admin-login-home span {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.admin-login-home button {
+  background: #ffffff !important;
+  color: #2563eb !important;
+  border: none !important;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-login-home button:hover {
+  background: #f1f5f9 !important;
+  color: #1d4ed8 !important;
+  transform: translateY(-1px);
+}
+/* ================================
+   ADMIN DASHBOARD
+================================ */
+
+.admin-dashboard-page {
+  min-height: 100vh;
+  display: flex;
+  background: #f5f7fb;
+  font-family: Arial, sans-serif;
+}
+
+/* SIDEBAR */
+
+.admin-dashboard-page .sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: #0f172a;
+  padding: 25px 15px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.admin-dashboard-page .sidebar-logo h2 {
+  color: white;
+  margin: 0;
+  padding: 10px;
+  font-size: 24px;
+}
+
+.admin-dashboard-page .sidebar-menu {
+  margin-top: 30px;
+}
+
+.admin-dashboard-page .sidebar-item {
+  width: 100%;
+  display: block;
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  padding: 14px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.admin-dashboard-page .sidebar-item:hover {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-dashboard-page .sidebar-item.active {
+  background: #2563eb;
+  color: white;
+}
+
+/* MAIN */
+
+.admin-dashboard-page .dashboard-main {
+  flex: 1;
+  padding: 40px;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+
+.admin-dashboard-page .dashboard-header {
+  margin-bottom: 30px;
+}
+
+.admin-dashboard-page .dashboard-header h1 {
+  margin: 0;
+  font-size: 34px;
+  color: #0f172a;
+}
+
+.admin-dashboard-page .dashboard-header p {
+  margin-top: 8px;
+  color: #64748b;
+}
+
+/* CARD */
+
+.admin-dashboard-page .dashboard-card {
+  background: white;
+  padding: 28px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.admin-dashboard-page .dashboard-card h2 {
+  margin-top: 0;
+  color: #0f172a;
+}
+
+/* INPUTS */
+
+.admin-dashboard-page input,
+.admin-dashboard-page select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.admin-dashboard-page input:focus,
+.admin-dashboard-page select:focus {
+  border-color: #2563eb;
+}
+
+/* LABELS */
+
+.admin-dashboard-page label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* CUSTOMER DETAILS */
+
+.admin-dashboard-page .profile-page-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.admin-dashboard-page .profile-large-icon {
+  width: 50px;
+  height: 50px;
+  background: #eff6ff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.admin-dashboard-page .profile-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.admin-dashboard-page .profile-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+/* BUTTON */
+
+.admin-dashboard-page .bank-primary-btn {
+  background: #2563eb !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 9px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-dashboard-page .bank-primary-btn:hover {
+  background: #1d4ed8 !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .admin-dashboard-page {
+    flex-direction: column;
+  }
+
+  .admin-dashboard-page .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .admin-dashboard-page .profile-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard-page .dashboard-main {
+    padding: 25px;
+  }
+}
