@@ -1,0 +1,285 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(15px);
+
+  transition: all 0.3s ease;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar-scrolled {
+  box-shadow: 0 5px 25px rgba(0, 68, 150, 0.12);
+}
+
+/* Container */
+
+.navbar-container {
+  max-width: 1250px;
+  margin: auto;
+
+  height: 75px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 25px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 25px;
+  font-weight: 800;
+
+  color: #1266f1;
+
+  cursor: pointer;
+
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+.logo-icon {
+  font-size: 28px;
+}
+
+.logo-highlight {
+  color: #0b3d91;
+}
+
+/* =========================
+   NAV LINKS
+========================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  border: none;
+  background: transparent;
+
+  padding: 10px 18px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: #26364a;
+
+  cursor: pointer;
+
+  position: relative;
+
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #1266f1;
+}
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 2px;
+  left: 50%;
+
+  width: 0;
+  height: 3px;
+
+  border-radius: 10px;
+
+  background: #1266f1;
+
+  transform: translateX(-50%);
+
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 55%;
+}
+
+/* =========================
+   NAV BUTTONS
+========================= */
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.login-btn,
+.register-btn {
+  padding: 10px 22px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.login-btn {
+  background: transparent;
+
+  color: #1266f1;
+
+  border: 1.5px solid #1266f1;
+}
+
+.login-btn:hover {
+  background: #1266f1;
+  color: white;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.25);
+}
+
+.register-btn {
+  border: none;
+
+  color: white;
+
+  background: linear-gradient(135deg, #1266f1, #0043a8);
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.3);
+}
+
+/* Mobile buttons hidden */
+
+.mobile-login,
+.mobile-register {
+  display: none;
+}
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+.menu-toggle {
+  display: none;
+
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 26px;
+  height: 3px;
+
+  border-radius: 5px;
+
+  background: #1266f1;
+
+  transition: 0.3s;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+  .nav-buttons {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+
+    top: 75px;
+    left: 0;
+
+    width: 100%;
+
+    background: white;
+
+    padding: 20px;
+
+    display: none;
+
+    flex-direction: column;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-login,
+  .mobile-register {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+  }
+
+  .mobile-login {
+    background: white;
+
+    border: 1px solid #1266f1;
+
+    color: #1266f1;
+  }
+
+  .mobile-register {
+    background: #1266f1;
+
+    border: none;
+
+    color: white;
+  }
+}

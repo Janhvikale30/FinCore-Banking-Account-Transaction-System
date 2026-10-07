@@ -1,0 +1,4713 @@
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+
+  color: #172b4d;
+
+  background: #f8faff;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  transition: 0.3s ease;
+}
+
+.navbar-scrolled {
+  box-shadow: 0 5px 25px rgba(0, 68, 150, 0.12);
+}
+
+.navbar-container {
+  max-width: 1250px;
+  height: 75px;
+  margin: auto;
+  padding: 0 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  color: #1266f1;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+.logo-icon {
+  font-size: 28px;
+}
+
+.logo-highlight {
+  color: #0b3d91;
+}
+
+/* =========================================================
+   NAV LINKS
+========================================================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-link {
+  position: relative;
+
+  border: none;
+  background: transparent;
+
+  padding: 10px 4px;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  color: #26364a;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #1266f1;
+}
+
+.nav-link::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 2px;
+
+  left: 50%;
+
+  width: 0;
+
+  height: 3px;
+
+  border-radius: 10px;
+
+  background: #1266f1;
+
+  transform: translateX(-50%);
+
+  transition: 0.3s;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 55%;
+}
+
+/* =========================================================
+   NAV BUTTONS
+========================================================= */
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.login-btn,
+.register-btn {
+  padding: 10px 22px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.login-btn {
+  color: #1266f1;
+
+  background: transparent;
+
+  border: 1.5px solid #1266f1;
+}
+
+.login-btn:hover {
+  background: #1266f1;
+
+  color: white;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.25);
+}
+
+.register-btn {
+  color: white;
+
+  border: none;
+
+  background: linear-gradient(135deg, #1266f1, #0043a8);
+}
+
+.register-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.3);
+}
+
+/* Mobile buttons */
+
+.mobile-login,
+.mobile-register {
+  display: none;
+}
+
+/* =========================================================
+   HAMBURGER
+========================================================= */
+
+.menu-toggle {
+  display: none;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 26px;
+
+  height: 3px;
+
+  border-radius: 5px;
+
+  background: #1266f1;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 650px;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(30, 115, 255, 0.12),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #f8fbff, #eef5ff);
+}
+
+.hero-container {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1250px;
+
+  min-height: 650px;
+
+  margin: auto;
+
+  padding: 70px 25px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  align-items: center;
+
+  gap: 60px;
+}
+
+/* =========================================================
+   BACKGROUND CIRCLES
+========================================================= */
+
+.circle {
+  position: absolute;
+
+  border-radius: 50%;
+
+  opacity: 0.5;
+
+  animation: float 6s ease-in-out infinite;
+}
+
+.circle-one {
+  width: 350px;
+
+  height: 350px;
+
+  right: -100px;
+
+  top: 100px;
+
+  background: rgba(0, 102, 255, 0.08);
+}
+
+.circle-two {
+  width: 220px;
+
+  height: 220px;
+
+  left: -80px;
+
+  bottom: -80px;
+
+  background: rgba(0, 180, 255, 0.08);
+
+  animation-delay: 2s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.welcome-badge {
+  display: inline-block;
+
+  padding: 8px 16px;
+
+  background: white;
+
+  border: 1px solid #dbe8ff;
+
+  border-radius: 30px;
+
+  color: #1266f1;
+
+  font-size: 14px;
+
+  margin-bottom: 20px;
+
+  box-shadow: 0 5px 20px rgba(18, 102, 241, 0.08);
+}
+
+.hero-content h1 {
+  margin: 0;
+
+  font-size: clamp(48px, 5vw, 70px);
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  color: #12284a;
+
+  letter-spacing: -2px;
+}
+
+.hero-content h1 span {
+  display: block;
+
+  background: linear-gradient(90deg, #1266f1, #00a6ff);
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  max-width: 600px;
+
+  margin: 25px 0;
+
+  font-size: 19px;
+
+  line-height: 1.7;
+
+  color: #52647d;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+.hero-buttons {
+  display: flex;
+
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 15px 27px;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.primary-btn {
+  border: none;
+
+  color: white;
+
+  background: linear-gradient(135deg, #1266f1, #0048b8);
+
+  box-shadow: 0 10px 25px rgba(18, 102, 241, 0.25);
+}
+
+.primary-btn span {
+  margin-left: 10px;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 30px rgba(18, 102, 241, 0.35);
+}
+
+.secondary-btn {
+  color: #1266f1;
+
+  background: white;
+
+  border: 1.5px solid #1266f1;
+}
+
+.secondary-btn:hover {
+  background: #1266f1;
+
+  color: white;
+
+  transform: translateY(-3px);
+}
+
+.trust-text {
+  margin-top: 25px;
+
+  color: #65758b;
+
+  font-size: 14px;
+}
+
+/* =========================================================
+   BANK CARD
+========================================================= */
+
+.bank-card-container {
+  position: relative;
+
+  min-height: 400px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.bank-card {
+  position: relative;
+
+  width: 470px;
+
+  height: 280px;
+
+  padding: 30px;
+
+  border-radius: 25px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #1266f1, #073c9e);
+
+  box-shadow: 0 30px 60px rgba(18, 80, 180, 0.3);
+
+  overflow: hidden;
+
+  transform: rotate(3deg);
+
+  transition: 0.4s;
+}
+
+.bank-card:hover {
+  transform: rotate(0deg) translateY(-10px);
+}
+
+.bank-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+
+  height: 250px;
+
+  right: -70px;
+
+  top: -80px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.bank-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 200px;
+
+  height: 200px;
+
+  right: -20px;
+
+  bottom: -120px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.card-top small,
+.card-bottom small {
+  opacity: 0.7;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+}
+
+.card-top h3 {
+  margin: 6px 0;
+
+  font-size: 19px;
+}
+
+.card-chip {
+  font-size: 45px;
+
+  opacity: 0.8;
+}
+
+.card-number {
+  margin-top: 45px;
+
+  font-size: 23px;
+
+  letter-spacing: 4px;
+}
+
+.card-bottom {
+  position: absolute;
+
+  bottom: 28px;
+
+  left: 30px;
+
+  right: 30px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+}
+
+.card-bottom strong {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 20px;
+}
+
+.visa {
+  font-size: 27px;
+
+  font-weight: 800;
+
+  font-style: italic;
+}
+
+/* =========================================================
+   FLOATING PAYMENT
+========================================================= */
+
+.floating-payment {
+  position: absolute;
+
+  right: -20px;
+
+  bottom: 25px;
+
+  padding: 15px 20px;
+
+  background: white;
+
+  border-radius: 15px;
+
+  display: flex;
+
+  gap: 12px;
+
+  align-items: center;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+  animation: floatingPayment 3s ease-in-out infinite;
+}
+
+.floating-payment span {
+  font-size: 28px;
+}
+
+.floating-payment strong {
+  display: block;
+
+  font-size: 13px;
+
+  color: #243b5a;
+}
+
+.floating-payment small {
+  color: #16a05d;
+
+  font-weight: 600;
+}
+
+@keyframes floatingPayment {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* =========================================================
+   STATISTICS
+========================================================= */
+
+.statistics {
+  background: white;
+
+  border-top: 1px solid #edf1f7;
+
+  border-bottom: 1px solid #edf1f7;
+}
+
+.stat-container {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 35px 25px;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  text-align: center;
+}
+
+.stat {
+  border-right: 1px solid #e7edf5;
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat h2 {
+  margin: 0;
+
+  color: #1266f1;
+
+  font-size: 30px;
+}
+
+.stat p {
+  margin: 5px 0;
+
+  color: #68788e;
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services-section {
+  padding: 100px 25px;
+
+  background: #f8faff;
+}
+
+.section-heading {
+  max-width: 700px;
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+}
+
+.section-heading span {
+  color: #1266f1;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.section-heading h2 {
+  margin: 12px 0;
+
+  font-size: 42px;
+
+  color: #172b4d;
+}
+
+.section-heading h2 strong {
+  color: #1266f1;
+}
+
+.section-heading p {
+  color: #68788e;
+
+  font-size: 17px;
+}
+
+/* =========================================================
+   SERVICE CARDS
+========================================================= */
+
+.services-grid {
+  max-width: 1100px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.service-card {
+  padding: 30px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  border: 1px solid #e7edf5;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 20px 40px rgba(20, 70, 130, 0.12);
+
+  border-color: #cbdfff;
+}
+
+.service-icon {
+  width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 15px;
+
+  background: #edf5ff;
+
+  font-size: 27px;
+
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  margin: 0 0 10px;
+
+  font-size: 20px;
+
+  color: #203858;
+}
+
+.service-card p {
+  color: #708096;
+
+  line-height: 1.6;
+
+  min-height: 70px;
+}
+
+.service-card button {
+  margin-top: 10px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #1266f1;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta-section {
+  max-width: 1100px;
+
+  margin: 80px auto;
+
+  padding: 65px 50px;
+
+  border-radius: 25px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #1266f1, #063c9e);
+
+  text-align: center;
+
+  box-shadow: 0 25px 50px rgba(18, 102, 241, 0.25);
+}
+
+.cta-section span {
+  font-size: 13px;
+
+  letter-spacing: 2px;
+
+  opacity: 0.8;
+}
+
+.cta-section h2 {
+  max-width: 700px;
+
+  margin: 15px auto;
+
+  font-size: 38px;
+}
+
+.cta-section p {
+  max-width: 600px;
+
+  margin: auto;
+
+  line-height: 1.6;
+
+  opacity: 0.85;
+}
+
+.cta-section button {
+  margin-top: 25px;
+
+  padding: 14px 25px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  color: #1266f1;
+
+  background: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.cta-section button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+  }
+
+  .hero-content p {
+    margin-left: auto;
+
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .bank-card {
+    width: 420px;
+  }
+
+  .stat-container {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+  }
+
+  .stat {
+    border-right: none;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+  .nav-buttons {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+
+    top: 75px;
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 20px;
+
+    display: none;
+
+    flex-direction: column;
+
+    background: white;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.nav-open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .mobile-login,
+  .mobile-register {
+    display: block;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+  }
+
+  .mobile-login {
+    color: #1266f1;
+
+    background: white;
+
+    border: 1px solid #1266f1;
+  }
+
+  .mobile-register {
+    color: white;
+
+    background: #1266f1;
+
+    border: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-container {
+    padding: 0 15px;
+  }
+
+  .logo {
+    font-size: 21px;
+  }
+
+  .hero-container {
+    padding-top: 50px;
+  }
+
+  .hero-content h1 {
+    font-size: 45px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .bank-card {
+    width: 330px;
+
+    height: 210px;
+
+    padding: 20px;
+  }
+
+  .card-number {
+    margin-top: 25px;
+
+    font-size: 15px;
+  }
+
+  .card-bottom {
+    left: 20px;
+
+    right: 20px;
+
+    bottom: 20px;
+  }
+
+  .floating-payment {
+    right: 0;
+  }
+
+  .stat-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat h2 {
+    font-size: 24px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading h2 {
+    font-size: 32px;
+  }
+
+  .cta-section {
+    margin: 40px 15px;
+
+    padding: 45px 25px;
+  }
+
+  .cta-section h2 {
+    font-size: 28px;
+  }
+}
+/* =========================================================
+   LOGIN PAGE
+========================================================= */
+
+.login-page {
+  min-height: calc(100vh - 75px);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 50px 20px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(18, 102, 241, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(circle at 85% 80%, rgba(0, 166, 255, 0.1), transparent 30%),
+    linear-gradient(135deg, #f8fbff, #eef5ff);
+}
+
+/* Background decorative circles */
+
+.login-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+
+  height: 350px;
+
+  border-radius: 50%;
+
+  background: rgba(18, 102, 241, 0.06);
+
+  top: -150px;
+
+  left: -100px;
+}
+
+.login-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+
+  height: 300px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 166, 255, 0.06);
+
+  bottom: -130px;
+
+  right: -80px;
+}
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login-card {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 450px;
+
+  padding: 40px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid #e0eaff;
+
+  border-radius: 22px;
+
+  box-shadow: 0 25px 60px rgba(24, 76, 140, 0.15);
+
+  animation: loginCardAppear 0.6s ease;
+}
+
+@keyframes loginCardAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   LOGIN HEADER
+========================================================= */
+
+.login-header {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.login-icon {
+  width: 65px;
+
+  height: 65px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 18px;
+
+  font-size: 32px;
+
+  background: linear-gradient(135deg, #eaf3ff, #dceaff);
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.12);
+}
+
+.login-header h1 {
+  margin: 0;
+
+  font-size: 32px;
+
+  font-weight: 750;
+
+  color: #12284a;
+}
+
+.login-header p {
+  margin: 10px 0 0;
+
+  font-size: 15px;
+
+  color: #718198;
+}
+
+/* =========================================================
+   LOGIN FORM
+========================================================= */
+
+.login-form {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #263b59;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: 1.5px solid #d8e2f0;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fbfdff;
+
+  color: #172b4d;
+
+  font-size: 15px;
+
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder {
+  color: #9aa8b9;
+}
+
+.form-group input:focus {
+  border-color: #1266f1;
+
+  background: white;
+
+  box-shadow: 0 0 0 4px rgba(18, 102, 241, 0.08);
+}
+
+/* =========================================================
+   FORGOT PASSWORD
+========================================================= */
+
+.forgot-password {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: -5px;
+
+  margin-bottom: 22px;
+}
+
+.forgot-password button {
+  border: none;
+
+  background: transparent;
+
+  padding: 0;
+
+  color: #1266f1;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.forgot-password button:hover {
+  color: #0043a8;
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.login-submit-btn {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  color: white;
+
+  background: linear-gradient(135deg, #1266f1, #0048b8);
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(18, 102, 241, 0.22);
+
+  transition: all 0.3s ease;
+}
+
+.login-submit-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 30px rgba(18, 102, 241, 0.3);
+}
+
+.login-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   REGISTER TEXT
+========================================================= */
+
+.register-text {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 25px;
+
+  font-size: 14px;
+
+  color: #718198;
+}
+
+.register-link {
+  border: none;
+
+  background: transparent;
+
+  padding: 0;
+
+  color: #1266f1;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.register-link:hover {
+  color: #0043a8;
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   LOGIN PAGE RESPONSIVE
+========================================================= */
+
+@media (max-width: 500px) {
+  .login-page {
+    min-height: calc(100vh - 65px);
+
+    padding: 30px 15px;
+  }
+
+  .login-card {
+    padding: 30px 22px;
+
+    border-radius: 18px;
+  }
+
+  .login-header h1 {
+    font-size: 28px;
+  }
+
+  .login-icon {
+    width: 58px;
+
+    height: 58px;
+
+    font-size: 28px;
+  }
+}
+/* =========================================================
+   REGISTER PAGE
+========================================================= */
+
+.register-page {
+  min-height: calc(100vh - 75px);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 40px 20px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(18, 102, 241, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(circle at 90% 80%, rgba(0, 166, 255, 0.1), transparent 30%),
+    linear-gradient(135deg, #f8fbff, #eef5ff);
+}
+
+/* Decorative background */
+
+.register-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 350px;
+
+  height: 350px;
+
+  border-radius: 50%;
+
+  background: rgba(18, 102, 241, 0.06);
+
+  top: -150px;
+
+  left: -100px;
+}
+
+.register-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+
+  height: 300px;
+
+  border-radius: 50%;
+
+  background: rgba(0, 166, 255, 0.06);
+
+  bottom: -120px;
+
+  right: -80px;
+}
+
+/* =========================================================
+   REGISTER CARD
+========================================================= */
+
+.register-card {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  max-width: 820px;
+
+  padding: 38px 45px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #e0eaff;
+
+  border-radius: 22px;
+
+  box-shadow: 0 25px 60px rgba(24, 76, 140, 0.15);
+
+  animation: registerCardAppear 0.6s ease;
+}
+
+@keyframes registerCardAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================================
+   REGISTER HEADER
+========================================================= */
+
+.register-header {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.register-icon {
+  width: 62px;
+
+  height: 62px;
+
+  margin: 0 auto 12px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 17px;
+
+  font-size: 31px;
+
+  background: linear-gradient(135deg, #eaf3ff, #dceaff);
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.12);
+}
+
+.register-header h1 {
+  margin: 0;
+
+  color: #12284a;
+
+  font-size: 30px;
+
+  font-weight: 750;
+}
+
+.register-header p {
+  margin: 8px 0 0;
+
+  color: #718198;
+
+  font-size: 15px;
+}
+
+/* =========================================================
+   REGISTER FORM
+========================================================= */
+
+.register-form {
+  width: 100%;
+}
+
+.register-form-group {
+  flex: 1;
+
+  margin-bottom: 18px;
+}
+
+.register-form-group label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #263b59;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+/* Input and Select */
+
+.register-form-group input,
+.register-form-group select {
+  width: 100%;
+
+  height: 46px;
+
+  padding: 0 14px;
+
+  border: 1.5px solid #d8e2f0;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #fbfdff;
+
+  color: #172b4d;
+
+  font-size: 14px;
+
+  transition: all 0.3s ease;
+
+  box-sizing: border-box;
+}
+
+/* Placeholder */
+
+.register-form-group input::placeholder {
+  color: #9aa8b9;
+}
+
+/* Focus */
+
+.register-form-group input:focus,
+.register-form-group select:focus {
+  border-color: #1266f1;
+
+  background: white;
+
+  box-shadow: 0 0 0 4px rgba(18, 102, 241, 0.08);
+}
+
+/* =========================================================
+   TWO COLUMN ROW
+========================================================= */
+
+.register-row {
+  display: flex;
+
+  gap: 22px;
+
+  width: 100%;
+}
+
+/* =========================================================
+   ERROR MESSAGE
+========================================================= */
+
+.error-message {
+  margin: 5px 0 0;
+
+  color: #dc3545;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   CREATE ACCOUNT BUTTON
+========================================================= */
+
+.create-account-btn {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 8px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #1266f1, #0048b8);
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 10px 25px rgba(18, 102, 241, 0.22);
+
+  transition: all 0.3s ease;
+}
+
+.create-account-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 30px rgba(18, 102, 241, 0.3);
+}
+
+.create-account-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   ALREADY HAVE ACCOUNT
+========================================================= */
+
+.already-account {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 20px;
+
+  color: #718198;
+
+  font-size: 14px;
+}
+
+.login-link {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #1266f1;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.login-link:hover {
+  color: #0043a8;
+
+  text-decoration: underline;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+  .register-card {
+    padding: 30px 25px;
+
+    max-width: 500px;
+  }
+
+  .register-row {
+    flex-direction: column;
+
+    gap: 0;
+  }
+
+  .register-form-group {
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 450px) {
+  .register-page {
+    padding: 25px 15px;
+  }
+
+  .register-card {
+    padding: 25px 18px;
+
+    border-radius: 18px;
+  }
+
+  .register-header h1 {
+    font-size: 26px;
+  }
+}
+/* =========================================================
+   CUSTOMER DASHBOARD
+========================================================= */
+
+.customer-dashboard {
+  min-height: 100vh;
+
+  display: flex;
+
+  background: linear-gradient(135deg, #f7faff, #eef5ff);
+
+  color: #172b4d;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.dashboard-sidebar {
+  width: 260px;
+
+  min-height: 100vh;
+
+  position: fixed;
+
+  left: 0;
+
+  top: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 25px 18px;
+
+  background: white;
+
+  border-right: 1px solid #e4ecf7;
+
+  box-shadow: 8px 0 30px rgba(24, 76, 140, 0.05);
+
+  z-index: 10;
+}
+
+/* Logo */
+
+.dashboard-logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 5px 10px 30px;
+
+  color: #1266f1;
+
+  font-size: 23px;
+
+  font-weight: 800;
+}
+
+.dashboard-logo-icon {
+  width: 40px;
+
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #e8f1ff, #dbeaff);
+
+  font-size: 21px;
+}
+
+/* Navigation */
+
+.dashboard-nav {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.dashboard-nav-item {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 13px 15px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background: transparent;
+
+  color: #65758b;
+
+  font-size: 15px;
+
+  font-weight: 550;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.dashboard-nav-item:hover {
+  background: #edf4ff;
+
+  color: #1266f1;
+
+  transform: translateX(3px);
+}
+
+.dashboard-nav-item.active {
+  color: #1266f1;
+
+  background: linear-gradient(135deg, #eaf3ff, #e0edff);
+
+  box-shadow: 0 5px 15px rgba(18, 102, 241, 0.08);
+}
+
+.nav-icon {
+  width: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+/* Logout */
+
+.dashboard-logout {
+  margin-top: auto;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #edf1f6;
+}
+
+.logout-item {
+  color: #dc4b4b;
+}
+
+.logout-item:hover {
+  color: #d32f2f;
+
+  background: #fff1f1;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.dashboard-main {
+  width: calc(100% - 260px);
+
+  margin-left: 260px;
+
+  padding: 35px 45px 50px;
+
+  min-height: 100vh;
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.dashboard-topbar {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+}
+
+.dashboard-welcome-small {
+  margin: 0 0 3px;
+
+  color: #8291a7;
+
+  font-size: 14px;
+}
+
+.dashboard-topbar h1 {
+  margin: 0;
+
+  color: #12284a;
+
+  font-size: 28px;
+
+  font-weight: 750;
+}
+
+.profile-circle {
+  width: 48px;
+
+  height: 48px;
+
+  border: 1px solid #dce8f7;
+
+  border-radius: 50%;
+
+  background: white;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(24, 76, 140, 0.08);
+
+  transition: 0.25s;
+}
+
+.profile-circle:hover {
+  transform: translateY(-2px);
+
+  border-color: #1266f1;
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.15);
+}
+
+/* =========================================================
+   ACCOUNT SUMMARY
+========================================================= */
+
+.account-summary {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1.35fr;
+
+  gap: 20px;
+
+  margin-bottom: 35px;
+}
+
+.summary-card {
+  min-height: 125px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 23px;
+
+  border: 1px solid #e0e9f5;
+
+  border-radius: 17px;
+
+  background: white;
+
+  box-shadow: 0 10px 30px rgba(24, 76, 140, 0.07);
+
+  transition: all 0.3s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 15px 35px rgba(24, 76, 140, 0.11);
+}
+
+.summary-icon {
+  width: 50px;
+
+  height: 50px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 14px;
+
+  font-size: 21px;
+
+  font-weight: 700;
+}
+
+.blue-icon {
+  background: #eaf3ff;
+
+  color: #1266f1;
+}
+
+.purple-icon {
+  background: #f1ebff;
+
+  color: #7456d9;
+}
+
+.green-icon {
+  background: #e7f8ed;
+
+  color: #199653;
+}
+
+.summary-card p {
+  margin: 0 0 7px;
+
+  color: #7d8ca0;
+
+  font-size: 13px;
+}
+
+.summary-card h3 {
+  margin: 0;
+
+  color: #172b4d;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+.balance-summary {
+  background: linear-gradient(135deg, #ffffff, #f2f8ff);
+}
+
+.balance-summary h2 {
+  margin: 0;
+
+  color: #1266f1;
+
+  font-size: 25px;
+
+  font-weight: 750;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.dashboard-section {
+  margin-bottom: 32px;
+}
+
+.section-heading {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  margin: 0 0 4px;
+
+  color: #172b4d;
+
+  font-size: 20px;
+
+  font-weight: 700;
+}
+
+.section-heading p {
+  margin: 0;
+
+  color: #8795a8;
+
+  font-size: 13px;
+}
+
+.view-all-btn {
+  border: none;
+
+  background: transparent;
+
+  color: #1266f1;
+
+  font-size: 14px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+.view-all-btn:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-actions {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.quick-action-card {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border: 1px solid #e0e9f5;
+
+  border-radius: 16px;
+
+  background: white;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+
+  overflow: hidden;
+}
+
+.quick-action-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 100px;
+
+  height: 100px;
+
+  border-radius: 50%;
+
+  right: -45px;
+
+  bottom: -50px;
+
+  background: rgba(18, 102, 241, 0.05);
+}
+
+.quick-action-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 15px 35px rgba(24, 76, 140, 0.1);
+}
+
+.quick-action-icon {
+  width: 48px;
+
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #edf4ff;
+
+  font-size: 21px;
+}
+
+.quick-action-card h3 {
+  margin: 0 0 5px;
+
+  color: #172b4d;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+.quick-action-card p {
+  margin: 0;
+
+  color: #8997a9;
+
+  font-size: 12px;
+}
+
+.action-arrow {
+  margin-left: auto;
+
+  color: #1266f1;
+
+  font-size: 20px;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   ACTIVITY CARD
+========================================================= */
+
+.activity-card {
+  padding: 5px 20px;
+
+  border: 1px solid #e0e9f5;
+
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow: 0 10px 30px rgba(24, 76, 140, 0.06);
+}
+
+.activity-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid #edf1f6;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+.activity-icon {
+  width: 42px;
+
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 20px;
+
+  font-weight: 700;
+}
+
+.deposit-activity {
+  background: #e7f8ed;
+
+  color: #15904f;
+}
+
+.transaction-activity {
+  background: #eaf3ff;
+
+  color: #1266f1;
+}
+
+.activity-left h4 {
+  margin: 0 0 4px;
+
+  color: #273a55;
+
+  font-size: 14px;
+
+  font-weight: 650;
+}
+
+.activity-left p {
+  margin: 0;
+
+  color: #8a98a9;
+
+  font-size: 12px;
+}
+
+.activity-right {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 4px;
+}
+
+.activity-right strong {
+  font-size: 14px;
+}
+
+.activity-right span {
+  color: #9aa6b6;
+
+  font-size: 11px;
+}
+
+.amount-positive {
+  color: #15904f;
+}
+
+.success-status {
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  background: #e7f8ed;
+
+  color: #15904f !important;
+
+  font-size: 11px !important;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   SECURITY BANNER
+========================================================= */
+
+.security-banner {
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 20px 23px;
+
+  border: 1px solid #dceaff;
+
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #edf5ff, #f7fbff);
+}
+
+.security-icon {
+  width: 45px;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: white;
+
+  font-size: 20px;
+
+  box-shadow: 0 5px 15px rgba(18, 102, 241, 0.08);
+}
+
+.security-banner h3 {
+  margin: 0 0 4px;
+
+  color: #234064;
+
+  font-size: 15px;
+}
+
+.security-banner p {
+  margin: 0;
+
+  color: #75869c;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+  .dashboard-sidebar {
+    width: 220px;
+  }
+
+  .dashboard-main {
+    width: calc(100% - 220px);
+
+    margin-left: 220px;
+
+    padding: 30px;
+  }
+
+  .account-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .balance-summary {
+    grid-column: span 2;
+  }
+
+  .quick-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-sidebar {
+    width: 75px;
+
+    padding: 20px 10px;
+  }
+
+  .dashboard-logo {
+    justify-content: center;
+
+    padding: 5px 0 30px;
+  }
+
+  .dashboard-logo span {
+    display: none;
+  }
+
+  .dashboard-nav-item {
+    justify-content: center;
+
+    padding: 13px 8px;
+  }
+
+  .dashboard-nav-item span:last-child {
+    display: none;
+  }
+
+  .dashboard-main {
+    width: calc(100% - 75px);
+
+    margin-left: 75px;
+
+    padding: 25px 18px;
+  }
+
+  .account-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .balance-summary {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .dashboard-main {
+    padding: 20px 14px;
+  }
+
+  .dashboard-topbar h1 {
+    font-size: 22px;
+  }
+
+  .summary-card {
+    min-height: 105px;
+
+    padding: 18px;
+  }
+
+  .balance-summary h2 {
+    font-size: 21px;
+  }
+
+  .activity-card {
+    padding: 5px 15px;
+  }
+
+  .activity-right strong {
+    font-size: 12px;
+  }
+
+  .security-banner {
+    align-items: flex-start;
+  }
+}
+/* =========================================================
+   DEPOSIT / WITHDRAW PAGE
+========================================================= */
+
+.bank-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  background: linear-gradient(135deg, #f7faff, #eef5ff);
+
+  color: #172b4d;
+}
+
+.bank-form-layout {
+  display: grid;
+
+  grid-template-columns: 1.4fr 0.8fr;
+
+  gap: 25px;
+
+  max-width: 1050px;
+}
+
+/* Form Card */
+
+.bank-form-card {
+  padding: 35px;
+
+  border: 1px solid #e0e9f5;
+
+  border-radius: 20px;
+
+  background: white;
+
+  box-shadow: 0 12px 35px rgba(24, 76, 140, 0.08);
+}
+
+.bank-form-icon {
+  width: 58px;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 15px;
+
+  background: #e8f3ff;
+
+  font-size: 25px;
+}
+
+.withdraw-form-icon {
+  background: #fff0f0;
+}
+
+.bank-form-card h2 {
+  margin: 0 0 8px;
+
+  color: #172b4d;
+
+  font-size: 24px;
+
+  font-weight: 750;
+}
+
+.bank-form-description {
+  margin: 0 0 28px;
+
+  color: #8795a8;
+
+  font-size: 14px;
+}
+
+/* Input */
+
+.bank-input-group {
+  margin-bottom: 20px;
+}
+
+.bank-input-group label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #334968;
+
+  font-size: 13px;
+
+  font-weight: 650;
+}
+
+.bank-input-group input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px 15px;
+
+  border: 1px solid #dce5f0;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fbfdff;
+
+  color: #243b5a;
+
+  font-size: 14px;
+
+  transition: 0.25s;
+}
+
+.bank-input-group input:focus {
+  border-color: #1266f1;
+
+  background: white;
+
+  box-shadow: 0 0 0 3px rgba(18, 102, 241, 0.08);
+}
+
+.bank-input-group input[readonly] {
+  background: #f5f8fc;
+
+  color: #65758b;
+
+  cursor: not-allowed;
+}
+
+/* Primary Button */
+
+.bank-primary-btn {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.deposit-btn {
+  background: linear-gradient(135deg, #1266f1, #0755d4);
+
+  box-shadow: 0 7px 18px rgba(18, 102, 241, 0.2);
+}
+
+.deposit-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(18, 102, 241, 0.28);
+}
+
+.withdraw-btn {
+  background: linear-gradient(135deg, #1266f1, #0755d4);
+
+  box-shadow: 0 7px 18px rgba(18, 102, 241, 0.2);
+}
+
+.withdraw-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Success */
+
+.success-message {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  border: 1px solid #c9eed8;
+
+  border-radius: 11px;
+
+  background: #ecfaf1;
+
+  color: #168448;
+}
+
+.success-message > span {
+  width: 25px;
+
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #24a35a;
+
+  color: white;
+
+  font-weight: bold;
+}
+
+.success-message strong {
+  font-size: 13px;
+}
+
+.success-message p {
+  margin: 4px 0 0;
+
+  font-size: 12px;
+}
+
+/* Error */
+
+.error-box {
+  margin-top: 20px;
+
+  padding: 13px;
+
+  border: 1px solid #ffd0d0;
+
+  border-radius: 10px;
+
+  background: #fff2f2;
+
+  color: #d93434;
+
+  font-size: 13px;
+
+  font-weight: 550;
+}
+
+/* =========================================================
+   INFORMATION CARD
+========================================================= */
+
+.bank-info-card {
+  align-self: start;
+
+  padding: 30px;
+
+  border: 1px solid #dce8f7;
+
+  border-radius: 20px;
+
+  background: linear-gradient(145deg, #eaf3ff, #ffffff);
+
+  box-shadow: 0 12px 35px rgba(24, 76, 140, 0.07);
+}
+
+.info-card-icon {
+  width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 18px;
+
+  border-radius: 15px;
+
+  background: white;
+
+  font-size: 24px;
+
+  box-shadow: 0 6px 18px rgba(18, 102, 241, 0.08);
+}
+
+.withdraw-info-icon {
+  background: #fff;
+}
+
+.bank-info-card h2 {
+  margin: 0 0 10px;
+
+  color: #1b3558;
+
+  font-size: 20px;
+}
+
+.bank-info-card > p {
+  margin: 0 0 25px;
+
+  color: #71839a;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+.info-stat {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid #dce8f5;
+}
+
+.info-stat span {
+  color: #71839a;
+
+  font-size: 13px;
+}
+
+.info-stat strong {
+  color: #1b3558;
+
+  font-size: 14px;
+}
+
+.secure-note {
+  margin-top: 20px;
+
+  padding: 11px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  color: #2770d5;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+.large-balance {
+  margin: 15px 0;
+
+  color: #1266f1;
+
+  font-size: 32px;
+
+  font-weight: 750;
+}
+
+.withdraw-limit {
+  display: flex;
+
+  justify-content: space-between;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: #65758b;
+
+  font-size: 12px;
+}
+
+.withdraw-limit strong {
+  color: #243b5a;
+}
+
+/* =========================================================
+   TRANSACTION HISTORY
+========================================================= */
+
+.transaction-summary {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+.transaction-stat {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  border: 1px solid #e0e9f5;
+
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow: 0 8px 25px rgba(24, 76, 140, 0.06);
+
+  transition: 0.25s;
+}
+
+.transaction-stat:hover {
+  transform: translateY(-3px);
+}
+
+.transaction-stat-icon {
+  width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #e8f5ed;
+
+  font-size: 20px;
+}
+
+.withdrawal-stat {
+  background: #fff0f0;
+}
+
+.balance-stat {
+  background: #eaf3ff;
+
+  color: #1266f1;
+
+  font-size: 19px;
+
+  font-weight: 750;
+}
+
+.transaction-stat p {
+  margin: 0 0 5px;
+
+  color: #8492a5;
+
+  font-size: 12px;
+}
+
+.transaction-stat h3 {
+  margin: 0;
+
+  color: #213754;
+
+  font-size: 19px;
+}
+
+/* Transaction Section */
+
+.transaction-section {
+  overflow: hidden;
+
+  border: 1px solid #e0e9f5;
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 10px 30px rgba(24, 76, 140, 0.07);
+}
+
+.transaction-header {
+  padding: 24px 25px;
+
+  border-bottom: 1px solid #e9eef5;
+}
+
+.transaction-header h2 {
+  margin: 0 0 5px;
+
+  color: #172b4d;
+
+  font-size: 20px;
+}
+
+.transaction-header p {
+  margin: 0;
+
+  color: #8997a9;
+
+  font-size: 13px;
+}
+
+/* Table */
+
+.transaction-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 700px;
+}
+
+.transaction-table th {
+  padding: 15px 20px;
+
+  background: #f5f8fc;
+
+  color: #60738d;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.transaction-table td {
+  padding: 17px 20px;
+
+  border-bottom: 1px solid #edf1f6;
+
+  color: #50647d;
+
+  font-size: 13px;
+
+  white-space: nowrap;
+}
+
+.transaction-table tbody tr {
+  transition: 0.2s;
+}
+
+.transaction-table tbody tr:hover {
+  background: #f8fbff;
+}
+
+.transaction-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Transaction Type */
+
+.transaction-type {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+
+  font-weight: 650;
+}
+
+.deposit-type {
+  background: #e7f8ed;
+
+  color: #15904f;
+}
+
+.withdrawal-type {
+  background: #fff0f0;
+
+  color: #d64545;
+}
+
+.table-positive {
+  color: #15904f;
+}
+
+.table-negative {
+  color: #d64545;
+}
+
+.table-balance {
+  color: #243b5a;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .bank-form-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .transaction-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .bank-form-card {
+    padding: 25px 20px;
+  }
+
+  .bank-info-card {
+    padding: 25px 20px;
+  }
+
+  .transaction-stat {
+    padding: 17px;
+  }
+}
+/* =========================================================
+   PROFILE PAGE
+========================================================= */
+
+.profile-page {
+  max-width: 1100px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+/* =========================================================
+   PROFILE HEADER
+========================================================= */
+
+.profile-header-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  padding: 28px 30px;
+
+  border: 1px solid #dfe8f3;
+
+  border-radius: 20px;
+
+  background: linear-gradient(135deg, #ffffff, #f1f7ff);
+
+  box-shadow: 0 10px 30px rgba(24, 76, 140, 0.07);
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.profile-header-card::after {
+  content: "";
+
+  width: 180px;
+
+  height: 180px;
+
+  position: absolute;
+
+  right: -70px;
+
+  top: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(18, 102, 241, 0.07);
+}
+
+/* Avatar */
+
+.profile-avatar {
+  width: 85px;
+
+  height: 85px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #1266f1, #084bbd);
+
+  color: white;
+
+  font-size: 35px;
+
+  box-shadow: 0 8px 20px rgba(18, 102, 241, 0.25);
+
+  position: relative;
+
+  z-index: 1;
+}
+
+/* Header information */
+
+.profile-header-info {
+  position: relative;
+
+  z-index: 1;
+
+  flex: 1;
+}
+
+.profile-header-info h2 {
+  margin: 0 0 5px;
+
+  color: #172b4d;
+
+  font-size: 25px;
+
+  font-weight: 750;
+}
+
+.profile-header-info p {
+  margin: 0 0 10px;
+
+  color: #71839a;
+
+  font-size: 14px;
+}
+
+.profile-status {
+  display: inline-block;
+
+  padding: 5px 11px;
+
+  border-radius: 20px;
+
+  background: #e8f8ee;
+
+  color: #168448;
+
+  font-size: 11px;
+
+  font-weight: 650;
+}
+
+/* Account Badge */
+
+.profile-account-badge {
+  min-width: 130px;
+
+  padding: 15px 18px;
+
+  border-radius: 12px;
+
+  background: white;
+
+  box-shadow: 0 5px 15px rgba(24, 76, 140, 0.06);
+
+  text-align: center;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+.profile-account-badge span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #8a98aa;
+
+  font-size: 11px;
+}
+
+.profile-account-badge strong {
+  color: #1266f1;
+
+  font-size: 14px;
+}
+
+/* =========================================================
+   PROFILE CARD
+========================================================= */
+
+.profile-card {
+  padding: 28px 30px;
+
+  border: 1px solid #e0e8f2;
+
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 8px 25px rgba(24, 76, 140, 0.06);
+}
+
+/* Card heading */
+
+.profile-card-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 25px;
+
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #edf1f6;
+}
+
+.profile-title-icon {
+  width: 45px;
+
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eaf3ff;
+
+  font-size: 20px;
+}
+
+.profile-card-title h2 {
+  margin: 0 0 4px;
+
+  color: #1b3558;
+
+  font-size: 19px;
+}
+
+.profile-card-title p {
+  margin: 0;
+
+  color: #8a98aa;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   PROFILE DETAILS
+========================================================= */
+
+.profile-details-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 18px 25px;
+}
+
+.profile-detail {
+  padding: 17px 18px;
+
+  border: 1px solid #e6edf5;
+
+  border-radius: 11px;
+
+  background: #fafcff;
+
+  transition: all 0.25s ease;
+}
+
+.profile-detail:hover {
+  border-color: #cbdcf4;
+
+  background: #f5f9ff;
+
+  transform: translateY(-2px);
+}
+
+.profile-detail span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #8492a5;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.3px;
+}
+
+.profile-detail strong {
+  display: block;
+
+  color: #263d5b;
+
+  font-size: 14px;
+
+  font-weight: 650;
+}
+
+/* Balance */
+
+.balance-detail {
+  border-color: #cfe4ff;
+
+  background: linear-gradient(135deg, #f0f7ff, #ffffff);
+}
+
+.balance-detail strong {
+  color: #1266f1;
+
+  font-size: 18px;
+}
+
+.active-text {
+  color: #168448 !important;
+}
+
+/* =========================================================
+   SECURITY CARD
+========================================================= */
+
+.profile-security-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  padding: 20px 23px;
+
+  border: 1px solid #cfe2fa;
+
+  border-radius: 15px;
+
+  background: linear-gradient(135deg, #edf6ff, #ffffff);
+}
+
+.security-icon {
+  width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  background: white;
+
+  font-size: 21px;
+
+  box-shadow: 0 5px 15px rgba(18, 102, 241, 0.08);
+}
+
+.profile-security-card h3 {
+  margin: 0 0 5px;
+
+  color: #1c4f91;
+
+  font-size: 15px;
+}
+
+.profile-security-card p {
+  margin: 0;
+
+  color: #71839a;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   PROFILE RESPONSIVE
+========================================================= */
+
+@media (max-width: 800px) {
+  .profile-header-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .profile-account-badge {
+    margin-left: 107px;
+  }
+
+  .profile-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-header-card {
+    padding: 22px;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .profile-account-badge {
+    margin-left: 0;
+
+    width: 100%;
+  }
+
+  .profile-card {
+    padding: 22px 18px;
+  }
+
+  .profile-security-card {
+    align-items: flex-start;
+  }
+}
+/* ================================
+   TRANSACTION HISTORY
+================================ */
+
+.transaction-summary {
+  background: white;
+  border: 1px solid #e2eaf5;
+  border-radius: 20px;
+  padding: 25px 30px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 8px 25px rgba(30, 80, 150, 0.05);
+}
+
+.transaction-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.summary-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: #eaf2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.transaction-summary-left p {
+  margin: 0 0 4px;
+  color: #7b8ba5;
+  font-size: 14px;
+}
+
+.transaction-summary-left h2 {
+  margin: 0;
+  color: #102d55;
+  font-size: 28px;
+}
+
+.transaction-count {
+  text-align: right;
+}
+
+.transaction-count span {
+  display: block;
+  color: #7b8ba5;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.transaction-count strong {
+  font-size: 25px;
+  color: #1769ff;
+}
+
+/* TABLE CARD */
+
+.transaction-table-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #e2eaf5;
+  box-shadow: 0 8px 25px rgba(30, 80, 150, 0.05);
+  overflow: hidden;
+}
+
+.transaction-table-header {
+  padding: 25px 30px;
+  border-bottom: 1px solid #edf1f7;
+}
+
+.transaction-table-header h2 {
+  margin: 0 0 5px;
+  color: #102d55;
+  font-size: 21px;
+}
+
+.transaction-table-header p {
+  margin: 0;
+  color: #8493a8;
+  font-size: 14px;
+}
+
+/* TABLE */
+
+.transaction-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 850px;
+}
+
+.transaction-table thead {
+  background: #f7faff;
+}
+
+.transaction-table th {
+  padding: 17px 20px;
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #73839b;
+  font-weight: 700;
+}
+
+.transaction-table td {
+  padding: 18px 20px;
+  border-top: 1px solid #edf1f7;
+  color: #263b5b;
+}
+
+.transaction-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.transaction-table tbody tr:hover {
+  background: #f8fbff;
+}
+
+/* TRANSACTION TYPE */
+
+.transaction-type {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.transaction-type-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.deposit-type {
+  background: #e7f8ef;
+  color: #1ba765;
+}
+
+.withdraw-type {
+  background: #fff0ef;
+  color: #e55353;
+}
+
+.transaction-type strong {
+  display: block;
+  color: #142f55;
+  font-size: 15px;
+}
+
+.transaction-type span {
+  display: block;
+  margin-top: 3px;
+  color: #91a0b4;
+  font-size: 12px;
+}
+
+/* DESCRIPTION */
+
+.transaction-description {
+  color: #667893;
+  font-size: 13px;
+}
+
+/* DATE */
+
+.transaction-date strong {
+  display: block;
+  font-size: 13px;
+  color: #344b6a;
+}
+
+.transaction-date span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #94a2b5;
+}
+
+/* AMOUNT */
+
+.table-amount {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.deposit-amount {
+  color: #15945a;
+}
+
+.withdraw-amount {
+  color: #e04d4d;
+}
+
+/* BALANCE */
+
+.balance-after {
+  color: #17345c;
+  font-size: 14px;
+}
+
+/* EMPTY STATE */
+
+.no-transactions {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.no-transaction-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  border-radius: 20px;
+  background: #edf4ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.no-transactions h3 {
+  margin: 0 0 8px;
+  color: #18365f;
+}
+
+.no-transactions p {
+  margin: 0;
+  color: #8493a8;
+}
+
+/* LOADING */
+
+.transaction-loading {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8ff;
+  color: #17345c;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #dce8fa;
+  border-top-color: #1769ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* ================================
+   DASHBOARD ACCOUNT CARD
+================================ */
+
+.dashboard-account-card {
+  background: linear-gradient(135deg, #1769ff, #4388ff);
+  color: white;
+  border-radius: 24px;
+  padding: 30px;
+  margin: 25px 0 30px;
+  box-shadow: 0 15px 35px rgba(23, 105, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-account-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  right: -70px;
+  top: -90px;
+}
+
+.balance-label {
+  margin: 0 0 8px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.dashboard-balance {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.account-number-section {
+  margin-top: 25px;
+}
+
+.account-number-section span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.75;
+  margin-bottom: 5px;
+}
+
+.account-number-section strong {
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+/* ACCOUNT INFORMATION */
+
+.dashboard-account-info {
+  margin-top: 35px;
+  background: white;
+  border: 1px solid #e3ebf6;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 8px 25px rgba(30, 80, 150, 0.05);
+}
+
+.account-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.account-info-header h2 {
+  margin: 0 0 5px;
+  color: #17345c;
+  font-size: 22px;
+}
+
+.account-info-header p {
+  margin: 0;
+  color: #8a9ab0;
+  font-size: 14px;
+}
+
+.account-info-icon {
+  width: 50px;
+  height: 50px;
+  background: #edf4ff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.account-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.account-info-item {
+  background: #f8faff;
+  border: 1px solid #edf1f7;
+  border-radius: 14px;
+  padding: 17px;
+}
+
+.account-info-item span {
+  display: block;
+  font-size: 12px;
+  color: #8b9ab0;
+  margin-bottom: 7px;
+}
+
+.account-info-item strong {
+  display: block;
+  color: #17345c;
+  font-size: 15px;
+}
+/* =========================================
+   DASHBOARD ACCOUNT SUMMARY
+========================================= */
+
+.dashboard-account-card {
+  margin-top: 30px;
+  padding: 32px;
+  min-height: 190px;
+
+  background: linear-gradient(135deg, #1769ff 0%, #3f86ff 100%);
+
+  border-radius: 24px;
+  color: white;
+
+  box-shadow: 0 15px 35px rgba(23, 105, 255, 0.18);
+
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-account-card::before {
+  content: "";
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  right: -60px;
+  top: -90px;
+}
+
+.dashboard-account-card::after {
+  content: "";
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  right: 100px;
+  bottom: -100px;
+}
+
+.balance-section {
+  position: relative;
+  z-index: 2;
+}
+
+.balance-label {
+  margin: 0 0 8px;
+
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dashboard-balance {
+  margin: 0;
+
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.account-number-section {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 28px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.account-number-section span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 12px;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+}
+
+.account-number-section strong {
+  font-size: 17px;
+
+  letter-spacing: 1.5px;
+}
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quick-actions-section {
+  margin-top: 38px;
+}
+
+.quick-actions-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.quick-actions-heading h2 {
+  margin: 0;
+
+  font-size: 23px;
+
+  color: #17345c;
+}
+
+.quick-actions-heading p {
+  margin: 5px 0 0;
+
+  color: #8495ad;
+
+  font-size: 14px;
+}
+
+.quick-actions-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+/* QUICK ACTION CARD */
+
+.quick-action-card {
+  width: 100%;
+
+  min-height: 125px;
+
+  padding: 22px;
+
+  border: 1px solid #e1e9f5;
+
+  border-radius: 20px;
+
+  background: white;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  box-shadow: 0 5px 20px rgba(30, 80, 150, 0.04);
+}
+
+.quick-action-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #bcd4ff;
+
+  box-shadow: 0 12px 30px rgba(30, 80, 150, 0.1);
+}
+
+.quick-action-icon {
+  min-width: 55px;
+
+  width: 55px;
+  height: 55px;
+
+  border-radius: 16px;
+
+  background: #edf4ff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+}
+
+.quick-action-content {
+  flex: 1;
+}
+
+.quick-action-content h3 {
+  margin: 0 0 6px;
+
+  font-size: 16px;
+
+  color: #17345c;
+}
+
+.quick-action-content p {
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  color: #8a9ab0;
+}
+
+.quick-action-arrow {
+  color: #1769ff;
+
+  font-size: 20px;
+
+  font-weight: 600;
+}
+
+/* =========================================
+   ACCOUNT INFORMATION
+========================================= */
+
+.dashboard-account-info {
+  margin-top: 38px;
+  margin-bottom: 40px;
+
+  padding: 28px;
+
+  background: white;
+
+  border: 1px solid #e1e9f5;
+
+  border-radius: 22px;
+
+  box-shadow: 0 8px 25px rgba(30, 80, 150, 0.05);
+}
+
+.account-info-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 24px;
+}
+
+.account-info-header h2 {
+  margin: 0 0 5px;
+
+  color: #17345c;
+
+  font-size: 22px;
+}
+
+.account-info-header p {
+  margin: 0;
+
+  color: #8999af;
+
+  font-size: 14px;
+}
+
+.account-info-icon {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 15px;
+
+  background: #edf4ff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+}
+
+/* INFORMATION GRID */
+
+.account-info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 15px;
+}
+
+.account-info-item {
+  padding: 18px;
+
+  background: #f8faff;
+
+  border: 1px solid #edf1f7;
+
+  border-radius: 14px;
+}
+
+.account-info-item span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #8b9bb0;
+
+  font-size: 12px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+.account-info-item strong {
+  display: block;
+
+  color: #17345c;
+
+  font-size: 15px;
+}
+@media (max-width: 1000px) {
+  .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .dashboard-account-card {
+    padding: 25px;
+  }
+
+  .dashboard-balance {
+    font-size: 32px;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ============================= */
+/* BANK PRIMARY BUTTON */
+/* ============================= */
+
+.bank-primary-btn {
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 10px;
+
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+
+  border: none !important;
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.bank-primary-btn:hover {
+  background-color: #1d4ed8 !important;
+  color: #ffffff !important;
+
+  transform: translateY(-1px);
+}
+
+.bank-primary-btn:active {
+  transform: translateY(0);
+}
+
+.bank-primary-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+/* ============================= */
+/* PROFILE */
+/* ============================= */
+
+.profile-page-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-page-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-large-icon {
+  width: 70px;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #eff6ff;
+  border-radius: 50%;
+
+  font-size: 32px;
+}
+
+.profile-page-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.profile-page-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+}
+
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.profile-detail {
+  padding: 18px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.profile-detail span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+.profile-detail strong {
+  color: #111827;
+
+  font-size: 16px;
+}
+
+.balance-detail {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.balance-detail strong {
+  color: #2563eb;
+  font-size: 20px;
+}
+/* ============================= */
+/* TRANSACTION HISTORY */
+/* ============================= */
+
+.transaction-history-card {
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 28px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.transaction-heading {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.transaction-heading h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: 22px;
+}
+
+.transaction-heading p {
+  margin-top: 7px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+.transaction-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.transaction-table th {
+  padding: 15px;
+
+  text-align: left;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.transaction-table td {
+  padding: 17px 15px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #374151;
+
+  font-size: 14px;
+}
+
+.transaction-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.transaction-deposit,
+.transaction-withdraw {
+  display: inline-block;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+.transaction-deposit {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.transaction-withdraw {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.no-transactions {
+  text-align: center;
+
+  padding: 60px 20px;
+
+  color: #6b7280;
+}
+
+.no-transactions div {
+  font-size: 45px;
+
+  margin-bottom: 10px;
+}
+
+.no-transactions h3 {
+  color: #374151;
+
+  margin-bottom: 5px;
+}
+
+.no-transactions p {
+  margin: 0;
+}
